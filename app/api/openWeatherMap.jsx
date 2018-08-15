@@ -15,7 +15,8 @@ module.exports = {
                 return res.data.main.temp;
             }
         }, function(res) {
-            throw new Error(res.data.message);
-        })
+            console.log(res);
+            throw new Error(res && ((res.response && res.response.data && (res.response.data.message || res.response.data)) || (res.code))) || res;;
+        });
     }
 }
